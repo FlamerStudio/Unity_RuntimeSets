@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Sets
 {
-    public abstract class AbstractRuntimeEnumerable<T> : ScriptableObject, IRuntimeEnumerable<T>
+    public abstract class AbstractRuntimeEnumerable<T> : ScriptableObject, IRuntimeMaxCount<T>, IRuntimeClearable
     {
         [SerializeField]
         protected int maxCount = int.MaxValue;
@@ -19,6 +19,8 @@ namespace Sets
                     throw new Exception("MaxCount must be > 0");
             }
         }
+
+        public abstract void Clear();
 
         private void OnValidate()
         {

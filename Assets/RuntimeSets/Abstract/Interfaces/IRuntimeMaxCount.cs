@@ -2,7 +2,7 @@
 
 namespace Sets
 {
-    public interface IRuntimeEnumerable<T>
+    public interface IRuntimeMaxCount<T>
     {
         int MaxCount { get; set; }
     }

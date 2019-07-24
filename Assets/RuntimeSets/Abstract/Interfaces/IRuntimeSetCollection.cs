@@ -1,6 +1,6 @@
 ﻿namespace Sets
 {
-    public interface IRuntimeSetCollection<T> : IRuntimeEnumerable<T>
+    public interface IRuntimeSetCollection<T> : IRuntimeMaxCount<T>
     {
         bool Add(T item);
 

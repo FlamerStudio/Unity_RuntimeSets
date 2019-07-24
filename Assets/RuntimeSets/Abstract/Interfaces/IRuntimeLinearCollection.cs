@@ -2,7 +2,7 @@
 
 namespace Sets
 {
-    public interface IRuntimeLinearCollection<T> : IRuntimeEnumerable<T>, IRuntimeDuplicateItem
+    public interface IRuntimeLinearCollection<T> : IRuntimeMaxCount<T>, IRuntimeDuplicateItem
     {
         void Enqueue(T item);
 

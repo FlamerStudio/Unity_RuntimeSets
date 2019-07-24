@@ -20,6 +20,11 @@ namespace Sets
             return items.Remove(item);
         }
 
+        public override void Clear()
+        {
+            items.Clear();
+        }
+
         private void OnEnable()
         {
             items = new List<T>();

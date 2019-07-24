@@ -18,6 +18,11 @@ namespace Sets
             return items.Remove(item);
         }
 
+        public override void Clear()
+        {
+            items.Clear();
+        }
+
         //
         // UNITY FONCTIONS
         //

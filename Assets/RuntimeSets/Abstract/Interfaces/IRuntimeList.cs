@@ -1,6 +1,6 @@
 ﻿namespace Sets
 {
-    public interface IRuntimeList<T> : IRuntimeEnumerable<T>, IRuntimeDuplicateItem
+    public interface IRuntimeList<T> : IRuntimeMaxCount<T>, IRuntimeDuplicateItem
     {
         void Add(T item);
     }

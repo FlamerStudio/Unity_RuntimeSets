@@ -30,6 +30,12 @@ namespace Sets
                 items.Enqueue(item);
         }
 
+        public override void Clear()
+        {
+            items.Clear();
+        }
+
+
         private void OnEnable()
         {
             items = new Queue<T>();
