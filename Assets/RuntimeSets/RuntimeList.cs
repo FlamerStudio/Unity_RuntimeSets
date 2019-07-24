@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RuntimeSets
 {
-    public abstract class RuntimeList<T> : AbstractRuntimeCollection<T>, IRuntimeList<T>
+    public class RuntimeList<T> : AbstractRuntimeCollection<T>, IRuntimeList<T>
     {
         private List<T> items;
         public List<T> Items { get => new List<T>(items); private set { } }
@@ -20,6 +20,10 @@ namespace RuntimeSets
         public bool Remove(T item)
         {
             return items.Remove(item);
+        }
+        public override void Clear()
+        {
+            items.Clear();
         }
 
         protected override void OnEnable()

@@ -14,7 +14,7 @@ namespace RuntimeSets
     /// Runtime List First In First Out
     /// </summary>
     /// <typeparam name="T">Runtime item</typeparam>
-    public abstract class RuntimetimeQueue<T> : AbstractRuntimeCollection<T>, IRuntimeDuplicateItem
+    public class RuntimetimeQueue<T> : AbstractRuntimeCollection<T>, IRuntimeDuplicateItem
     {
         private Queue<T> items;
         public Queue<T> Items { get => new Queue<T>(items); private set { } }

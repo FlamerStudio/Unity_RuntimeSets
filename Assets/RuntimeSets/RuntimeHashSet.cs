@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RuntimeSets
 {
-    public abstract class RuntimeHashSet<T> : AbstractRuntimeCollection<T>, IRuntimeSet<T>
+    public class RuntimeHashSet<T> : AbstractRuntimeCollection<T>, IRuntimeSet<T>
     {
         private HashSet<T> items = new HashSet<T>();
         public HashSet<T> Items { get => new HashSet<T>(items); }
@@ -22,6 +22,11 @@ namespace RuntimeSets
         public override void Clear()
         {
             items.Clear();
+        }
+
+        protected override void OnEnable()
+        {
+            items = new HashSet<T>();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace RuntimeSets
     /// Runtime List to prevent duplicates
     /// </summary>
     /// <typeparam name="T">Runtime item</typeparam>
-    public abstract class RuntimeStack<T> : AbstractRuntimeCollection<T>, IRuntimeStackCollection<T>
+    public class RuntimeStack<T> : AbstractRuntimeCollection<T>, IRuntimeStackCollection<T>
     {
         private Stack<T> items;
         public Stack<T> Items { get => new Stack<T>(items); }
@@ -48,12 +48,12 @@ namespace RuntimeSets
 
         public void Push(T item)
         {
-            throw new System.NotImplementedException();
+            items.Push(item);
         }
 
         public T Pop()
         {
-            throw new System.NotImplementedException();
+            return items.Pop();
         }
     }
 }
