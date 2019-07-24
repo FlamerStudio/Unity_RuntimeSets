@@ -8,16 +8,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Sets
+namespace RuntimeSets
 {
     /// <summary>
     /// Runtime List to prevent duplicates
     /// </summary>
     /// <typeparam name="T">Runtime item</typeparam>
-    public abstract class RuntimeStack<T> : AbstractRuntimeEnumerableDuplicate<T>, IRuntimeLinearCollection<T>
+    public abstract class RuntimeStack<T> : AbstractRuntimeCollection<T>, IRuntimeStackCollection<T>
     {
         private Stack<T> items;
         public Stack<T> Items { get => new Stack<T>(items); }
+        public bool AllowDuplicates { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         public void Enqueue(T item)
         {
@@ -40,9 +41,19 @@ namespace Sets
             items.Clear();
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
             items = new Stack<T>();
+        }
+
+        public void Push(T item)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public T Pop()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

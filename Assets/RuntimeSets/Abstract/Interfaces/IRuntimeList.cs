@@ -1,6 +1,6 @@
-﻿namespace Sets
+﻿namespace RuntimeSets
 {
-    public interface IRuntimeList<T> : IRuntimeMaxCount<T>, IRuntimeDuplicateItem
+    public interface IRuntimeList<T> : IRuntimeCollection, IRuntimeDuplicateItem, IRuntimeRemoveItem<T>
     {
         void Add(T item);
     }

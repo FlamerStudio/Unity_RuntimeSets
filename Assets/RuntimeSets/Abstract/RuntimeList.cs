@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Sets
+namespace RuntimeSets
 {
-    public abstract class RuntimeList<T> : AbstractRuntimeEnumerableDuplicate<T>, IRuntimeList<T>
+    public abstract class RuntimeList<T> : AbstractRuntimeCollection<T>, IRuntimeList<T>
     {
         private List<T> items;
-
         public List<T> Items { get => new List<T>(items); private set { } }
+
+        [SerializeField]
+        private bool allowDuplicates;
+        public bool AllowDuplicates { get => allowDuplicates; set => allowDuplicates = value; }
 
         public void Add(T item)
         {
@@ -20,12 +22,7 @@ namespace Sets
             return items.Remove(item);
         }
 
-        public override void Clear()
-        {
-            items.Clear();
-        }
-
-        private void OnEnable()
+        protected override void OnEnable()
         {
             items = new List<T>();
         }

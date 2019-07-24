@@ -8,16 +8,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Sets
+namespace RuntimeSets
 {
     /// <summary>
     /// Runtime List First In First Out
     /// </summary>
     /// <typeparam name="T">Runtime item</typeparam>
-    public abstract class RuntimetimeQueue<T> : AbstractRuntimeEnumerableDuplicate<T>, IRuntimeLinearCollection<T>
+    public abstract class RuntimetimeQueue<T> : AbstractRuntimeCollection<T>, IRuntimeDuplicateItem
     {
         private Queue<T> items;
         public Queue<T> Items { get => new Queue<T>(items); private set { } }
+
+        public bool AllowDuplicates { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         public T Dequeue()
         {
@@ -35,8 +37,7 @@ namespace Sets
             items.Clear();
         }
 
-
-        private void OnEnable()
+        protected override void OnEnable()
         {
             items = new Queue<T>();
         }

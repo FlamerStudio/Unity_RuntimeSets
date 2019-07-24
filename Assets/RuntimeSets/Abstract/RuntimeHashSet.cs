@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace Sets
+namespace RuntimeSets
 {
-    public abstract class AbstractRuntimeSetCollection<T> : AbstractRuntimeEnumerable<T>, IRuntimeSetCollection<T>
+    public abstract class RuntimeHashSet<T> : AbstractRuntimeCollection<T>, IRuntimeSet<T>
     {
-        private HashSet<T> items;
-
+        private HashSet<T> items = new HashSet<T>();
         public HashSet<T> Items { get => new HashSet<T>(items); }
 
         public bool Add(T item)
@@ -21,19 +22,6 @@ namespace Sets
         public override void Clear()
         {
             items.Clear();
-        }
-
-        //
-        // UNITY FONCTIONS
-        //
-        private void OnValidate()
-        {
-            maxCount = maxCount < 1 ? int.MaxValue : maxCount;
-        }
-
-        private void OnEnable()
-        {
-            items = new HashSet<T>();
         }
     }
 }

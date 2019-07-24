@@ -1,4 +1,4 @@
-﻿namespace Sets
+﻿namespace RuntimeSets
 {
     public interface IRuntimeDuplicateItem
     {
