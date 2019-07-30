@@ -2,7 +2,7 @@
 
 namespace RuntimeSets
 {
-    public interface IRuntimeStackCollection<T> : IRuntimeCollection, IRuntimeDuplicateItem
+    public interface IRuntimeStack<T> : IRuntimeCollection, IRuntimeDuplicateItem
     {
         void Push(T item);
 

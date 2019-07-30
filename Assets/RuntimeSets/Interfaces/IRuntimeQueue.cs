@@ -1,6 +1,6 @@
 ﻿namespace RuntimeSets
 {
-    public interface IRuntimeQueueCollection<T> : IRuntimeCollection, IRuntimeDuplicateItem
+    public interface IRuntimeQueue<T> : IRuntimeCollection, IRuntimeDuplicateItem
     {
         void Enqueue(T item);
 

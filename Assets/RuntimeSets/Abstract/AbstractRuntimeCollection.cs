@@ -24,7 +24,7 @@ namespace RuntimeSets
         // -----------------------------------
         // UNITY FONCTIONS
         //------------------------------------
-        private void OnValidate()
+        protected void OnValidate()
         {
             maxCount = maxCount < 1 ? int.MaxValue : maxCount;
         }

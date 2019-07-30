@@ -6,7 +6,6 @@
 // ----------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace RuntimeSets
 {
@@ -14,11 +13,10 @@ namespace RuntimeSets
     /// Runtime List to prevent duplicates
     /// </summary>
     /// <typeparam name="T">Runtime item</typeparam>
-    public class RuntimeStack<T> : AbstractRuntimeCollection<T>, IRuntimeStackCollection<T>
+    public class RuntimeStack<T> : AbstractRuntimeDuplicateCollection<T>, IRuntimeStack<T>
     {
         private Stack<T> items;
         public Stack<T> Items { get => new Stack<T>(items); }
-        public bool AllowDuplicates { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         public void Enqueue(T item)
         {

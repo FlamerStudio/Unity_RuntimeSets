@@ -14,12 +14,10 @@ namespace RuntimeSets
     /// Runtime List First In First Out
     /// </summary>
     /// <typeparam name="T">Runtime item</typeparam>
-    public class RuntimetimeQueue<T> : AbstractRuntimeCollection<T>, IRuntimeDuplicateItem
+    public class RuntimetimeQueue<T> : AbstractRuntimeDuplicateCollection<T>, IRuntimeQueue<T>
     {
         private Queue<T> items;
         public Queue<T> Items { get => new Queue<T>(items); private set { } }
-
-        public bool AllowDuplicates { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         public T Dequeue()
         {
