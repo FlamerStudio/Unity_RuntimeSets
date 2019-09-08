@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace RuntimeSets
+namespace Flamers.RuntimeSets
 {
-    public interface IRuntimeStack<T> : IRuntimeCollection, IRuntimeDuplicateItem
+    public interface IRuntimeStack<T> : IRuntimeDuplicateItem
     {
         void Push(T item);
 

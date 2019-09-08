@@ -1,4 +1,4 @@
-﻿namespace RuntimeSets
+﻿namespace Flamers.RuntimeSets
 {
     public interface IRuntimeDuplicateItem
     {

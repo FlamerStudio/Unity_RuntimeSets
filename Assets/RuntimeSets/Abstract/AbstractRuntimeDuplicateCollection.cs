@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RuntimeSets
+namespace Flamers.RuntimeSets
 {
     public abstract class AbstractRuntimeDuplicateCollection<T> : AbstractRuntimeCollection<T>, IRuntimeDuplicateItem
     {

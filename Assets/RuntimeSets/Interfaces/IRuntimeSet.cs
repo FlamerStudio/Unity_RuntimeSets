@@ -1,6 +1,6 @@
-﻿namespace RuntimeSets
+﻿namespace Flamers.RuntimeSets
 {
-    public interface IRuntimeSet<T> : IRuntimeCollection, IRuntimeRemoveItem<T>
+    public interface IRuntimeSet<T> : IRuntimeRemoveItem<T>
     {
         bool Add(T item);
     }

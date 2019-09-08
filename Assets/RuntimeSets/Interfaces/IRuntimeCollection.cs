@@ -1,4 +1,6 @@
-﻿namespace RuntimeSets
+﻿using System;
+
+namespace Flamers.RuntimeSets
 {
     public interface IRuntimeCollection
     {

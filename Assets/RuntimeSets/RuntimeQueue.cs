@@ -5,10 +5,11 @@
 // Date:   10/04/17
 // ----------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RuntimeSets
+namespace Flamers.RuntimeSets
 {
     /// <summary>
     /// Runtime List First In First Out
@@ -17,17 +18,31 @@ namespace RuntimeSets
     public class RuntimetimeQueue<T> : AbstractRuntimeDuplicateCollection<T>, IRuntimeQueue<T>
     {
         private Queue<T> items;
+
+        public override event Action<T> SuccessAddItem;
+        public override event Action<T> BeforeAddItem;
+        public override event Action<T> SuccessRemoveItem;
+        public override event Action<T> BeforeRemoveItem;
+
         public Queue<T> Items { get => new Queue<T>(items); private set { } }
 
         public T Dequeue()
         {
-            return items.Count > 0 ? items.Dequeue() : default;
+            BeforeRemoveItem?.Invoke(default);
+            T item = items.Count > 0 ? items.Dequeue() : default;
+            if(item != null)
+                SuccessRemoveItem?.Invoke(item);
+            return item;
         }
 
         public void Enqueue(T item)
         {
+            BeforeAddItem?.Invoke(item);
             if (AllowDuplicates || !items.Contains(item))
+            {
                 items.Enqueue(item);
+                SuccessAddItem?.Invoke(item);
+            }
         }
 
         public override void Clear()

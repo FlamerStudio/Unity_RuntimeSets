@@ -5,9 +5,10 @@
 // Date:   10/04/17
 // ----------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
-namespace RuntimeSets
+namespace Flamers.RuntimeSets
 {
     /// <summary>
     /// Runtime List to prevent duplicates
@@ -16,23 +17,13 @@ namespace RuntimeSets
     public class RuntimeStack<T> : AbstractRuntimeDuplicateCollection<T>, IRuntimeStack<T>
     {
         private Stack<T> items;
+
+        public override event Action<T> SuccessAddItem;
+        public override event Action<T> BeforeAddItem;
+        public override event Action<T> SuccessRemoveItem;
+        public override event Action<T> BeforeRemoveItem;
+
         public Stack<T> Items { get => new Stack<T>(items); }
-
-        public void Enqueue(T item)
-        {
-            if (AllowDuplicates || !items.Contains(item))
-                items.Push(item);
-        }
-
-        public T Remove()
-        {
-            return items.Count > 0 ? items.Pop() : default;
-        }
-
-        public T Dequeue()
-        {
-            return items.Pop();
-        }
 
         public override void Clear()
         {
@@ -46,12 +37,21 @@ namespace RuntimeSets
 
         public void Push(T item)
         {
-            items.Push(item);
+            BeforeAddItem?.Invoke(item);
+            if (AllowDuplicates || !items.Contains(item))
+            {
+                items.Push(item);
+                SuccessAddItem?.Invoke(item);
+            }
         }
 
         public T Pop()
         {
-            return items.Pop();
+            BeforeRemoveItem?.Invoke(default);
+            T item = items.Pop();
+            if(item != null)
+                SuccessRemoveItem?.Invoke(item);
+            return item;
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace RuntimeSets
+﻿using System;
+
+namespace Flamers.RuntimeSets
 {
-    public interface IRuntimeQueue<T> : IRuntimeCollection, IRuntimeDuplicateItem
+    public interface IRuntimeQueue<T> : IRuntimeDuplicateItem
     {
         void Enqueue(T item);
 
