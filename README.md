@@ -44,3 +44,10 @@ Action<T> SuccessRemoveItem;
 
 You can subscribe of these events.
 BeforeRemoveItem event gets parameter null for RuntimeStack and RuntimeQueue. The item can't be got before the Dequeue() method;
+
+For more information, an example folder is in the package.
+
+If you found bugs or other problems, I'm open of any suggestions.
+Thanks per advance.
+
+Enjoy ;)
